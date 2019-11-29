@@ -32,19 +32,14 @@ class ShoppingCart {
 
   addProduct(product) {
     this.products.push(product);
-    // console.log(this.products);
+    let name = product.name
+    if(this.amountname !== undefined){
+      this.amount[name]++
+    }else{
+      this.amount[name] = 1
+    }    
   }
 
-  increaseAmount() {
-    // if a product is added, amount goes to 1, if another one of same kind is added,
-    //  don't add product but set amount to += amount, being plus one
-    if (this.amount == undefined) {
-      this.amount = 1;
-    } else {
-      this.amount += this.amount;
-    }
-    return this.amount;
-  }
 
   toString() {
     return "cart with: " + this.products;
@@ -61,20 +56,6 @@ class ShoppingCart {
     }
   }
 
-  // determineDuplicates() {
-  //   for (let i = 0; i < this.products.length; i++) {
-  //     for (let j = this.products.length - 1; j >= i; j--) {
-  //       // console.log(this.products[i].name)
-  //       if (i !== j && this.products[i].name == this.products[j].name) {
-  //         this.repeatingItems.push(this.products[i].name);
-  //       }
-  //     }
-  //   }
-  //   return this.repeatingItems;
-  // }
-
-  // problem here: method pushes exponential amount into the array.  
-  // so adding products to the cart, results in 1 3 6 10 15 21
 
   // discountOnEveryFourthItem() {
   //   for (let i = 0; i < this.products.length; i++) {
@@ -112,7 +93,7 @@ console.log(cart.products.length);
 console.log(cart.products[3].name);
 console.log(cart.products[3].price);
 
-cart.increaseAmount();
+// cart.increaseAmount();
 console.log(cart.amount);
 
 console.log(cart.total);
